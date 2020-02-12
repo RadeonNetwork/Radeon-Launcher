@@ -26,9 +26,10 @@ window.eval = global.eval = function () {
 
 // Display warning when devtools window is opened.
 remote.getCurrentWebContents().on('devtools-opened', () => {
-    console.log('%cThe console is dark and full of terrors.', 'color: white; -webkit-text-stroke: 4px #a02d2a; font-size: 60px; font-weight: bold')
-    console.log('%cIf you\'ve been told to paste something here, you\'re being scammed.', 'font-size: 16px')
-    console.log('%cUnless you know exactly what you\'re doing, close this window.', 'font-size: 16px')
+    console.log('%cIl ne fait pas bon de traîner ici.', 'color: white; -webkit-text-stroke: 4px #a02d2a; font-size: 60px; font-weight: bold')
+    console.log('%cSi quelqun vous a demandé de coller ou écrire quelque chose ici, il y a 100 chances sur 10 que ce soit une tentative de piratage.', 'font-size: 16px')
+    console.log('%cIl vaut mieux fermer cette fenêtre et retourner à la sécurité.', 'font-size: 16px')
+    console.log('%cSi vous savez ce que vous faites, vous devriez venir travailler chez nous.', 'font-size: 16px')
 })
 
 // Disable zoom, needed for darwin.
@@ -49,7 +50,7 @@ if(!isDev){
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/helioslauncher-${info.version}.dmg`
+                    info.darwindownload = `https://github.com/GeekCornerGH/TitiMC-Launcher/releases/download/v${info.version}/helioslauncher-${info.version}.dmg`
                     showUpdateUI(info)
                 }
                 
