@@ -10,27 +10,8 @@ The distribution index is written in JSON. The general format of the index is as
         "smallImageText": "WesterosCraft",
         "smallImageKey": "seal-circle"
     },
-    "rss": "https://westeroscraft.com/articles/index.rss",
+    "rss": "http://titimc.blog/titimc/feed.rss",
     "servers": [
-        {
-            "id": "Example_Server",
-            "name": "WesterosCraft Example Client",
-            "description": "Example WesterosCraft server. Connect for fun!",
-            "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/example_icon.png",
-            "version": "0.0.1",
-            "address": "mc.westeroscraft.com:1337",
-            "minecraftVersion": "1.11.2",
-            "discord": {
-                "shortId": "Example",
-                "largeImageText": "WesterosCraft Example Server",
-                "largeImageKey": "server-example"
-            },
-            "mainServer": true,
-            "autoconnect": true,
-            "modules": [
-                "Module Objects Here"
-            ]
-        }
     ]
 }
 ```
