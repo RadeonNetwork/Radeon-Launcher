@@ -12,15 +12,15 @@
     "servers": [
         {
             "id": "BedWars",
-            "name": "BedWars sur TitiMC. Défendez votre lit et attaquez les autres équipes.",
-            "description": "Tests for our version change to 1.12.2 are live here.",
+            "name": "BedWars.",
+            "description": "Défendez votre lit et attaquez les autres équipes.",
             "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/server-test.png",
             "version": "4.2.1",
             "address": "mc.westeroscraft.com:4445",
             "minecraftVersion": "1.12.2",
             "discord": {
                 "shortId": "1.12.2 Test Server",
-                "largeImageText": "WesterosCraft 1.12.2 Test Server",
+                "largeImageText": "BedWars sur TitiMC",
                 "largeImageKey": "server-test"
             },
             "mainServer": false,
@@ -239,7 +239,7 @@
                     ]
                 },
                 {
-                    "id": "custommainnenu",
+                    "id": "custommainnenu:1",
                     "name": "Menu personalisé",
                     "type": "ForgeMod",
                     "artifact": {
