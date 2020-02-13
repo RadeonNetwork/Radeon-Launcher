@@ -239,7 +239,7 @@
                     ]
                 },
                 {
-                    "id": "custommainnenu:cmm:1",
+                    "id": "com.cmm:cmm:1",
                     "name": "Menu personalisé",
                     "type": "ForgeMod",
                     "artifact": {
