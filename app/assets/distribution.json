@@ -11,8 +11,8 @@
     "rss": "https://forum.westeroscraft.com/forum/news.2/index.rss",
     "servers": [
         {
-            "id": "WesterosCraftTest-1.12.2",
-            "name": "WesterosCraft 1.12.2 Test Server",
+            "id": "BedWars",
+            "name": "BedWars sur TitiMC. Défendez votre lit et attaquez les autres équipes.",
             "description": "Tests for our version change to 1.12.2 are live here.",
             "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/server-test.png",
             "version": "4.2.1",
@@ -239,8 +239,8 @@
                     ]
                 },
                 {
-                    "id": "com.westeroscraft:westerosblocks:4.0.0-beta-1-66",
-                    "name": "WesterosBlocks",
+                    "id": "custommainnenu",
+                    "name": "Menu personalisé",
                     "type": "ForgeMod",
                     "artifact": {
                         "size": 17286330,
