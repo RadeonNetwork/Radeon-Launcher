@@ -359,8 +359,8 @@ The module type `ForgeMod` represents a mod loaded by the Forge Mod Loader (FML)
 Ex.
 ```json
 {
-    "id": "com.westeroscraft:westerosblocks:3.0.0-beta-6-133",
-    "name": "WesterosBlocks (3.0.0-beta-6-133)",
+    "id": "custommainmenu",
+    "name": "custommainmenu",
     "type": "ForgeMod",
     "artifact": {
         "size": 16321712,
