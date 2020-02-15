@@ -243,9 +243,9 @@
                     "name": "Menu personalisé",
                     "type": "ForgeMod",
                     "artifact": {
-                        "size": 17286330,
-                         "MD5": "e5c38ef42e9cc4b957122207dcf95f4f",
-                        "url": "http://mc.westeroscraft.com/WesterosCraftLauncher/test-1.12.2/mods/WesterosBlocks.jar"
+                        "size": 122441,
+                         "MD5": "63ea716b07ea7fda39508a412e3d5403",
+                        "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/CustomMainMenu-MC1.12.2-2.0.9.1.jar?raw=true"
                     }
                 },
                 {
