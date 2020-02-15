@@ -249,14 +249,14 @@
                     }
                 },
                 {
-                    "id": "com.westeroscraft:westeroscraftrp:2019-01-21",
-                    "name": "WesterosCraft Resource Pack",
+                    "id": "menu",
+                    "name": "Menu",
                     "type": "File",
                     "artifact": {
-                        "size": 47002312,
-                        "MD5": "86b169611ca0e51fdc47384d8423c402",
-                        "path": "resourcepacks/WesterosCraft.zip",
-                        "url": "http://mc.westeroscraft.com/WesterosCraftLauncher/test-1.12.2/resourcepacks/WesterosCraft.zip"
+                        "size": 3779,
+                        "MD5": "96d82d97b6da214734239c358155da4f",
+                        "path": "config/CustomMainMenu/mainmenu.json",
+                        "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/mainmenu.json"
                     }
                 },
                 {
