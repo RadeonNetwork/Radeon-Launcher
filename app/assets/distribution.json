@@ -8,23 +8,23 @@
     "java": {
         "oracle": "http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html"
     },
-    "rss": "http://titimc.blog/titimcblog/feed/",
+    "rss": "http://titimc.blog/titimcblog/feed",
     "servers": [
         {
             "id": "BedWars",
             "name": "BedWars.",
             "description": "Défendez votre lit et attaquez les autres équipes.",
             "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/server-test.png",
-            "version": "0.1",
+            "version": "alpha.1",
             "address": "titimc.net:1111",
             "minecraftVersion": "1.12.2",
             "discord": {
-                "shortId": "1.12.2 Test Server",
+                "shortId": "bedwars",
                 "largeImageText": "BedWars sur TitiMC",
                 "largeImageKey": "server-test"
             },
             "mainServer": false,
-            "autoconnect": false,
+            "autoconnect": true,
             "modules": [
                 {
                     "id": "net.minecraftforge:forge:1.12.2-14.23.5.2797",
