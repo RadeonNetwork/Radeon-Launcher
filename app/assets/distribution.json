@@ -24,7 +24,7 @@
                 "largeImageKey": "server-test"
             },
             "mainServer": false,
-            "autoconnect": true,
+            "autoconnect": false,
             "modules": [
                 {
                     "id": "net.minecraftforge:forge:1.12.2-14.23.5.2797",
