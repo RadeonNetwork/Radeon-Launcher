@@ -235,18 +235,37 @@
                                 "MD5": "6eb9e61097bee3103a2fdc42746b76a4",
                                 "url": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/1.12.2/MercuriusUpdater-1.12.2.jar"
                             }
-                        }
+                        },
+                        {
+                            "id": "com.cmm:cmm:1",
+                            "name": "Menu personalisé",
+                            "type": "ForgeMod",
+                            "artifact": {
+                                "size": 122441,
+                                 "MD5": "63ea716b07ea7fda39508a412e3d5403",
+                                "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/CustomMainMenu-MC1.12.2-2.0.9.1.jar?raw=true"
+                            }
+                        },
+                        {
+                            "id": "com.cmm:cmm:1",
+                            "name": "Menu personalisé",
+                            "type": "ForgeMod",
+                            "artifact": {
+                                "size": 122441,
+                                 "MD5": "63ea716b07ea7fda39508a412e3d5403",
+                                "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/CustomMainMenu-MC1.12.2-2.0.9.1.jar?raw=true"
+                            }
+                        },
+                        {
+                            "id": "ks.ks:ksmod:1",
+                            "name": "keystrokes",
+                            "type": "ForgeMod",
+                            "artifact": {
+                                "size": 82840,
+                                 "MD5": "d067f8d2b32dcc21c7b41acf9b94d10f",
+                                "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/Keystrokes-7.0%20(1.12.2).jar?raw=true"
+                            }
                     ]
-                },
-                {
-                    "id": "com.cmm:cmm:1",
-                    "name": "Menu personalisé",
-                    "type": "ForgeMod",
-                    "artifact": {
-                        "size": 122441,
-                         "MD5": "63ea716b07ea7fda39508a412e3d5403",
-                        "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/CustomMainMenu-MC1.12.2-2.0.9.1.jar?raw=true"
-                    }
                 },
                 {
                     "id": "menu",
