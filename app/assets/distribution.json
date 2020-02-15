@@ -257,7 +257,7 @@
                             }
                         },
                         {
-                            "id": "ks.ks:ksmod:1",
+                            "id": "com.ks:ksmod:1",
                             "name": "keystrokes",
                             "type": "ForgeMod",
                             "artifact": {
