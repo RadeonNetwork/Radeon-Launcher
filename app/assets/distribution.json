@@ -237,7 +237,7 @@
                             }
                         },
                         {
-                            "id": "com.cmm:cmm:1",
+                            "id": "lumien.custommainmenu:CustomMainMenu:2.0.9.1",
                             "name": "Menu personalisé",
                             "type": "ForgeMod",
                             "artifact": {
@@ -247,17 +247,17 @@
                             }
                         },
                         {
-                            "id": "com.cmm:cmm:1",
-                            "name": "Menu personalisé",
+                            "id": "com.ks:keystrokesmod:1",
+                            "name": "keystrokes",
                             "type": "ForgeMod",
                             "artifact": {
-                                "size": 122441,
-                                 "MD5": "63ea716b07ea7fda39508a412e3d5403",
-                                "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/CustomMainMenu-MC1.12.2-2.0.9.1.jar?raw=true"
+                                "size": 82840,
+                                 "MD5": "d067f8d2b32dcc21c7b41acf9b94d10f",
+                                "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/Keystrokes-7.0%20(1.12.2).jar?raw=true"
                             }
                         },
                         {
-                            "id": "com.ks:ksmod:1",
+                            "id": "com.ks:keystrokesmod:1",
                             "name": "keystrokes",
                             "type": "ForgeMod",
                             "artifact": {
