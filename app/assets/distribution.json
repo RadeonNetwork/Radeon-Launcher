@@ -239,7 +239,7 @@
                     ]
                 },
                 {
-						"id": "lumien.custommainmenu:CustomMainMenu:2.0.9.1",
+			"id": "lumien.custommainmenu:CustomMainMenu:2.0.9.1",
                         "name": "Menu personalisé",
                         "type": "ForgeMod",
                         "required": {
