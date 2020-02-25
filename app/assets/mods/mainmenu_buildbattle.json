@@ -24,7 +24,7 @@
             "action" : 
             {
                 "type" : "connectToServer",
-                "ip" : "titimc.net:1111"
+                "ip" : "titimc.net:8888"
             }
         },
         
@@ -133,7 +133,7 @@
             "posY" : 70,
             "color" : -256,
             "alignment" : "top_center",
-            "texts" : "BedWars"
+            "texts" : "BuildBattle"
         },
         
         "panorama":

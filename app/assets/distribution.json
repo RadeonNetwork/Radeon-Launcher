@@ -14,7 +14,7 @@
             "id": "BedWars",
             "name": "BedWars.",
             "description": "Défendez votre lit et attaquez les autres équipes.",
-            "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/server-test.png",
+            "icon": "https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/7/76/White_Bed.png/150px-White_Bed.png?version=758c7d2b4ad73f94655883bf366237b9",
             "version": "alpha.1",
             "address": "titimc.net:1111",
             "minecraftVersion": "1.12.2",
