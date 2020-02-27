@@ -603,7 +603,7 @@
                     "artifact": {
                         "size": 3779,
                         "MD5": "ce3a903729532396a5a4962e37e5a2ce",
-                        "path": "config/customwindowtitle-client_buildbattle.toml",
+                        "path": "config/customwindowtitle-client.toml",
                         "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/customwindowtitle-client-creatif.toml"
                     }
                 },
@@ -649,7 +649,7 @@
             "id": "creative",
             "name": "Creatif.",
             "description": "Montrez-nous votre talent en build",
-            "icon": "https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/4/41/Chest.gif/150px-Chest.gif?version=92e1f763e7583ebb30a86cb859f9bce4",
+            "icon": "https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/2/20/TNT_Revision_2.png/150px-TNT_Revision_2.png?version=19d4d1d80ea57e0351fc78ceeac919a5",
             "version": "alpha.1",
             "address": "titimc.net:7777",
             "minecraftVersion": "1.12.2",
@@ -919,8 +919,8 @@
                     "artifact": {
                         "size": 3779,
                         "MD5": "3479dc98eb0ae55667e6fb1fa91a90ca",
-                        "path": "config/customwindowtitle-client_buildbattle.toml",
-                        "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/customwindowtitle-client.toml"
+                        "path": "config/customwindowtitle-client.toml",
+                        "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/customwindowtitle-client_buildbattle.toml"
                     }
                 },
                 {
@@ -967,7 +967,7 @@
             "description": "Ne tombez pas dans le vide! Sinon vous avez perdu!",
             "icon": "https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/4/41/Chest.gif/150px-Chest.gif?version=92e1f763e7583ebb30a86cb859f9bce4",
             "version": "alpha.1",
-            "address": "titimc.net:8888",
+            "address": "titimc.net:6666",
             "minecraftVersion": "1.12.2",
             "discord": {
                 "shortId": "bedwars",
@@ -1218,24 +1218,24 @@
                     }
                 },
                 {
-                    "id": "menubb",
+                    "id": "menudr",
                     "name": "Menu",
                     "type": "File",
                     "artifact": {
                         "size": 3779,
-                        "MD5": "178a7b7cc92c3050d81e474d1b3b93c3",
+                        "MD5": "877dff5e06200734e072978ba86771f1",
                         "path": "config/CustomMainMenu/mainmenu.json",
-                        "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/mainmenu_buildbattle.json"
+                        "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/mainmenu_deathrun.json"
                     }
                 },
                 {
-                    "id": "titrebb",
+                    "id": "titredr",
                     "name": "Titre",
                     "type": "File",
                     "artifact": {
                         "size": 3779,
-                        "MD5": "3479dc98eb0ae55667e6fb1fa91a90ca",
-                        "path": "config/customwindowtitle-client_buildbattle.toml",
+                        "MD5": "1db464a2477ee1fd678805f185e87280",
+                        "path": "config/customwindowtitle-client.toml",
                         "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/customwindowtitle-client.toml"
                     }
                 },
