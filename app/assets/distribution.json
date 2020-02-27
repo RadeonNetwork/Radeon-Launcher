@@ -330,10 +330,10 @@
             ]
         },
         {
-            "id": "BuildBattle",
-            "name": "BuildBattle.",
-            "description": "Qui sera le meilleur constructeur?",
-            "icon": "https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/0/07/Crafting_Table_JE4.png/150px-Crafting_Table_JE4.png?version=bd1b6f6b89e931a85a1b8473cd5e3d29",
+            "id": "Créatif",
+            "name": "Créatif.",
+            "description": "Montrez-nous votre talent",
+            "icon": "https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/4/41/Chest.gif/150px-Chest.gif?version=92e1f763e7583ebb30a86cb859f9bce4",
             "version": "alpha.1",
             "address": "titimc.net:8888",
             "minecraftVersion": "1.12.2",
