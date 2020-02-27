@@ -1,9 +1,9 @@
 {
   "name": "titimclauncher",
   "version": "1.7.0",
-  "productName": "Helios Launcher",
-  "description": "Modded Minecraft Launcher",
-  "author": "Daniel Scalzi (https://github.com/dscalzi/)",
+  "productName": "Launcher TitiMC",
+  "description": "Launcher pour TitiMC",
+  "author": "Daniel Scalzi (https://github.com/dscalzi/) et GeekCorner (https://geekcorner.page.link/yt)",
   "license": "UNLICENSED",
   "homepage": "https://geekcorner.page.link/yt",
   "bugs": {

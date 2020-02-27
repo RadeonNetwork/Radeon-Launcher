@@ -18,8 +18,8 @@ function getCurrentPlatform(){
 builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
-        appId: 'helioslauncher',
-        productName: 'Helios Launcher',
+        appId: 'TitiMClauncher',
+        productName: 'TitiMC Launcher',
         artifactName: '${productName}.${ext}',
         copyright: 'Copyright © 2018-2020 Daniel Scalzi',
         directories: {
@@ -46,10 +46,10 @@ builder.build({
         },
         linux: {
             target: 'AppImage',
-            maintainer: 'Daniel Scalzi',
-            vendor: 'Daniel Scalzi',
-            synopsis: 'Modded Minecraft Launcher',
-            description: 'Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.',
+            maintainer: 'GeekCorner',
+            vendor: 'GeekCorner',
+            synopsis: 'Launcher pour TitiMC',
+            description: 'Launcher pour TitiMC',
             category: 'Game'
         },
         compression: 'maximum',
