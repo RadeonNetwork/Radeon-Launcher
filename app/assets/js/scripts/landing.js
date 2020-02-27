@@ -667,17 +667,17 @@ function dlAsync(login = true){
                 const gameStateChange = function(data){
                     data = data.trim()
                     if(SERVER_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Exploring the Realm!')
+                        DiscordWrapper.updateDetails('Exploration de TitiMC')
                     } else if(GAME_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Sailing to Westeros!')
+                        DiscordWrapper.updateDetails('TitiMC!')
                     }
                 }
 
                 const gameErrorListener = function(data){
                     data = data.trim()
-                    if(data.indexOf('Could not find or load main class net.minecraft.launchwrapper.Launch') > -1){
-                        loggerLaunchSuite.error('Game launch failed, LaunchWrapper was not downloaded properly.')
-                        showLaunchFailure('Error During Launch', 'The main file, LaunchWrapper, failed to download properly. As a result, the game cannot launch.<br><br>To fix this issue, temporarily turn off your antivirus software and launch the game again.<br><br>If you have time, please <a href="https://github.com/dscalzi/HeliosLauncher/issues">submit an issue</a> and let us know what antivirus software you use. We\'ll contact them and try to straighten things out.')
+                    if(data.indexOf('Impossible de trouver net.minecraft.launchwrapper.Launch') > -1){
+                        loggerLaunchSuite.error('Problème de lancement du jeu, LaunchWrapper n\'a pas été téléchargé proprement.')
+                        showLaunchFailure('Problème du lancement du jeu.', 'Le fichier, LaunchWrapper, n\'a pas été téléchargé proprement. Le jeu n\'a pas pu être lancé.<br><br>Veuillez essayez de désactiver temporairement votre antivirus.<br><br>Veuillez créer une issue <a href="https://github.com/GeekCornerGH/titimc-launcher/issues">ici</a>.')
                     }
                 }
 
@@ -689,7 +689,7 @@ function dlAsync(login = true){
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('Done. Enjoy the server!')
+                    setLaunchDetails('C\'est bon! Appréciez le serveur!')
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()
@@ -697,7 +697,7 @@ function dlAsync(login = true){
                         DiscordWrapper.initRPC(distro.discord, serv.discord)
                         hasRPC = true
                         proc.on('close', (code, signal) => {
-                            loggerLaunchSuite.log('Shutting down Discord Rich Presence..')
+                            loggerLaunchSuite.log('Arrêt de Discord Rich Presence..')
                             DiscordWrapper.shutdownRPC()
                             hasRPC = false
                             proc = null
@@ -706,8 +706,8 @@ function dlAsync(login = true){
 
                 } catch(err) {
 
-                    loggerLaunchSuite.error('Error during launch', err)
-                    showLaunchFailure('Error During Launch', 'Please check the console (CTRL + Shift + i) for more details.')
+                    loggerLaunchSuite.error('Erreur!', err)
+                    showLaunchFailure('Erreur lors du lancement.', 'Checkez la console (CTRL + Shift + i) pour plus de détails.')
 
                 }
             }

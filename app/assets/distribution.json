@@ -597,6 +597,17 @@
                     }
                 },
                 {
+                    "id": "titrebb",
+                    "name": "Titre",
+                    "type": "File",
+                    "artifact": {
+                        "size": 3779,
+                        "MD5": "3479dc98eb0ae55667e6fb1fa91a90ca",
+                        "path": "config/customwindowtitle-client_buildbattle.toml",
+                        "url": "https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/mods/customwindowtitle-client.toml"
+                    }
+                },
+                {
                     "id": "net.optifine:optifine:1.12.2_HD_U_E3",
                     "name": "Optifine",
                     "type": "ForgeMod",
