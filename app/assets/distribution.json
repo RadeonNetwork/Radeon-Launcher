@@ -267,6 +267,20 @@
                     }
                 },
                 {
+                    "id": "chylex.customwindowtitle:CustomWindowTitle:1.0.0",
+                    "name": "nom de fenêtre",
+                    "type": "ForgeMod",
+                    "required": {
+                        "value": true,
+                        "def": true
+                    },
+                    "artifact": {
+                        "size": 82840,
+                        "MD5": "c9c6c35a93de385bc97e610bb2f8bbdd",
+                        "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/blob/master/app/assets/mods/CustomWindowTitle-Legacy-v1.0.0.jar?raw=true"
+                    }
+                },
+                {
                     "id": "menu",
                     "name": "Menu",
                     "type": "File",
