@@ -1,13 +1,13 @@
 {
-  "name": "titimclauncher",
+  "name": "rtmclauncher",
   "version": "1.7.0",
-  "productName": "Launcher TitiMC",
-  "description": "Launcher pour TitiMC",
+  "productName": "Launcher RTMC",
+  "description": "Launcher pour RTMC",
   "author": "Daniel Scalzi (https://github.com/dscalzi/) et GeekCorner (https://geekcorner.page.link/yt)",
   "license": "UNLICENSED",
   "homepage": "https://geekcorner.page.link/yt",
   "bugs": {
-    "url": "https://github.com/GeekCornerGH/TitiMC-Launcher/issues"
+    "url": "https://github.com/GeekCornerGH/RTMC-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -47,6 +47,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GeekCornerGH/TitiMC-Launcher.git"
+    "url": "git+https://github.com/GeekCornerGH/RTMC-Launcher.git"
   }
 }
