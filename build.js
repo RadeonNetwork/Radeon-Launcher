@@ -18,10 +18,10 @@ function getCurrentPlatform(){
 builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
-        appId: 'TitiMClauncher',
-        productName: 'TitiMC Launcher',
+        appId: 'RTMClauncher',
+        productName: 'RTMC Launcher',
         artifactName: '${productName}.${ext}',
-        copyright: 'Copyright © 2018-2020 Daniel Scalzi',
+        copyright: 'Copyright © 2018-2020 Daniel Scalzi et GeekCorner',
         directories: {
             buildResources: 'build',
             output: 'dist'
@@ -48,8 +48,8 @@ builder.build({
             target: 'AppImage',
             maintainer: 'GeekCorner',
             vendor: 'GeekCorner',
-            synopsis: 'Launcher pour TitiMC',
-            description: 'Launcher pour TitiMC',
+            synopsis: 'Launcher pour RTMC',
+            description: 'Launcher pour RTMC',
             category: 'Game'
         },
         compression: 'maximum',
