@@ -210,8 +210,8 @@
           "name": "Custom Main Menu",
           "type": "ForgeMod",
           "required": {
-            "value": false,
-            "def": false
+            "value": true,
+            "def": true
           },
           "artifact": {
             "size": 213920,
@@ -224,8 +224,8 @@
           "name": "KeystrokesMod",
           "type": "ForgeMod",
           "required": {
-            "value": false,
-            "def": false
+            "value": true,
+            "def": true
           },
           "artifact": {
             "size": 81298,
@@ -238,8 +238,8 @@
           "name": "OptiFine 1.8.8_HD_U_I7",
           "type": "ForgeMod",
           "required": {
-            "value": false,
-            "def": false
+            "value": true,
+            "def": true
           },
           "artifact": {
             "size": 2015763,
@@ -252,8 +252,8 @@
           "name": "Reach Display Mod",
           "type": "ForgeMod",
           "required": {
-            "value": false,
-            "def": false
+            "value": true,
+            "def": true
           },
           "artifact": {
             "size": 9596,
@@ -266,8 +266,8 @@
           "name": "mainmenu.json",
           "type": "File",
           "required": {
-            "value": false,
-            "def": false
+            "value": true,
+            "def": true
           },
           "artifact": {
             "size": 3076,
