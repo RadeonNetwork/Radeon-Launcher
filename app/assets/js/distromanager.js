@@ -537,8 +537,8 @@ exports.pullRemote = function(){
         return exports.pullLocal()
     }
     return new Promise((resolve, reject) => {
-        const distroURL = 'https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/master/app/assets/distribution.json'
-        //const distroURL = 'https://raw.githubusercontent.com/GeekCornerGH/TitiMC-Launcher/114bdea18c03517649c47b17a69388f39c34e158/app/assets/distribution.json'
+        const distroURL = 'https://raw.githubusercontent.com/GeekCornerGH/RTMC-Launcher/master/app/assets/distribution.json'
+        //const distroURL = 'https://raw.githubusercontent.com/GeekCornerGH/RTMC-Launcher/114bdea18c03517649c47b17a69388f39c34e158/app/assets/distribution.json'
         //const distroURL = 'http://mc.westeroscraft.com/WesterosCraftLauncher/distribution.json'
         //const distroURL = 'https://gist.githubusercontent.com/dscalzi/53b1ba7a11d26a5c353f9d5ae484b71b/raw/'
         const opts = {
