@@ -49,15 +49,15 @@ if(!isDev){
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/GeekCornerGH/RTMC-Launcher/releases/download/v${info.version}/helioslauncher-${info.version}.dmg`
+                    info.darwindownload = `https://github.com/GeekCornerGH/RTMC-Launcher/releases/download/v${info.version}/rtmc-launcher-${info.version}.dmg`
                     showUpdateUI(info)
                 }
                 
                 populateSettingsUpdateInformation(info)
                 break
             case 'update-downloaded':
-                loggerAutoUpdaterSuccess.log('Update ' + info.version + ' ready to be installed.')
-                settingsUpdateButtonStatus('Install Now', false, () => {
+                loggerAutoUpdaterSuccess.log('La mise à jour ' + info.version + ' est prête à être installée .')
+                settingsUpdateButtonStatus('Installer maintenant', false, () => {
                     if(!isDev){
                         ipcRenderer.send('autoUpdateAction', 'installUpdateNow')
                     }
@@ -65,8 +65,8 @@ if(!isDev){
                 showUpdateUI(info)
                 break
             case 'update-not-available':
-                loggerAutoUpdater.log('No new update found.')
-                settingsUpdateButtonStatus('Check for Updates')
+                loggerAutoUpdater.log('Vous disposez déjà de la dernière version .')
+                settingsUpdateButtonStatus('Vérifier les mises à jour')
                 break
             case 'ready':
                 updateCheckListener = setInterval(() => {
@@ -79,7 +79,7 @@ if(!isDev){
                     if(info.code === 'ERR_UPDATER_INVALID_RELEASE_FEED'){
                         loggerAutoUpdater.log('No suitable releases found.')
                     } else if(info.code === 'ERR_XML_MISSED_ELEMENT'){
-                        loggerAutoUpdater.log('No releases found.')
+                        loggerAutoUpdater.log('Aucune version trouvée.')
                     } else {
                         loggerAutoUpdater.error('Error during update check..', info)
                         loggerAutoUpdater.debug('Error Code:', info.code)
