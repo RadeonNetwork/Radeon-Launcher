@@ -18,17 +18,10 @@ function getCurrentPlatform(){
 builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
-<<<<<<< HEAD
-        appId: 'RTMClauncher',
+        appId: 'rtmclauncher',
         productName: 'RTMC Launcher',
-        artifactName: '${productName}.${ext}',
-        copyright: 'Copyright © 2018-2020 Daniel Scalzi et GeekCorner',
-=======
-        appId: 'helioslauncher',
-        productName: 'Helios Launcher',
         artifactName: '${productName}-setup-${version}.${ext}',
-        copyright: 'Copyright © 2018-2020 Daniel Scalzi',
->>>>>>> 64dfc541dcd8ad88facea9c5d3bc6cb20d9de080
+        copyright: 'Copyright © 2018-2020 Daniel Scalzi et GeekCorner',
         directories: {
             buildResources: 'build',
             output: 'dist'
@@ -56,7 +49,7 @@ builder.build({
             maintainer: 'GeekCorner',
             vendor: 'GeekCorner',
             synopsis: 'Launcher pour RTMC',
-            description: 'Launcher pour RTMC',
+            description: 'Launcher pour RTMC permettant de rejoindre les différents modes de jeux..',
             category: 'Game'
         },
         compression: 'maximum',
