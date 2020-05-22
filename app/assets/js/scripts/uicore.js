@@ -49,11 +49,7 @@ if(!isDev){
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-<<<<<<< HEAD
                     info.darwindownload = `https://github.com/GeekCornerGH/RTMC-Launcher/releases/download/v${info.version}/rtmc-launcher-${info.version}.dmg`
-=======
-                    info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/helioslauncher-setup-${info.version}.dmg`
->>>>>>> 8726638a235bae927cb150365b72c6ffdd23d854
                     showUpdateUI(info)
                 }
                 

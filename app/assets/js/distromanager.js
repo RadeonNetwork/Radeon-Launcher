@@ -537,7 +537,6 @@ exports.pullRemote = function(){
         return exports.pullLocal()
     }
     return new Promise((resolve, reject) => {
-        //const distroURL = 'http://dlcenter.rtmc/launcher/distribution.json'
         const distroURL = 'https://raw.githubusercontent.com/GeekCornerGH/RTMC-Launcher/master/app/assets/distribution.json'
         //const distroURL = 'https://raw.githubusercontent.com/GeekCornerGH/RTMC-Launcher/114bdea18c03517649c47b17a69388f39c34e158/app/assets/distribution.json'
         //const distroURL = 'http://mc.westeroscraft.com/WesterosCraftLauncher/distribution.json'
