@@ -203,8 +203,12 @@
                             </svg>
                         </div>
                         <input class="settingsFileSelVal" id="settingsJavaExecVal" type="text" value="null" cValue="JavaExecutable" disabled>
+<<<<<<< HEAD
                         <input class="settingsFileSelSel" id="settingsJavaExecSel" type="file" <%= process.platform === 'win32' ? 'accept=.exe' : '' %>>
                         <label class="settingsFileSelLabel" for="settingsJavaExecSel">Choisir un exécutable</label>
+=======
+                        <button class="settingsFileSelButton" id="settingsJavaExecSel" dialogTitle="Select Java Executable" dialogDirectory="false">Choose File</button>
+>>>>>>> 8726638a235bae927cb150365b72c6ffdd23d854
                     </div>
                 </div>
                 <div class="settingsFileSelDesc">L'exécutable de Java est vérifié avant que le jeu ne se lance.. <strong>Requires Java 8 x64.</strong><br>L'emplacement devrait se terminer comme ceci: <strong>bin<%= process.platform === 'win32' ? '\\javaw.exe' : '/java' %></strong>.</div>
@@ -261,8 +265,12 @@
                             </svg>
                         </div>
                         <input class="settingsFileSelVal" type="text" value="null" cValue="DataDirectory" disabled>
+<<<<<<< HEAD
                         <input class="settingsFileSelSel" id="settingsDataDirSel" type="file" webkitdirectory>
                         <label class="settingsFileSelLabel" for="settingsDataDirSel">Choisir un dossier</label>
+=======
+                        <button class="settingsFileSelButton" dialogTitle="Select Data Directory" dialogDirectory="true">Choose Folder</button>
+>>>>>>> 8726638a235bae927cb150365b72c6ffdd23d854
                     </div>
                 </div>
                 <div class="settingsFileSelDesc">Tous les fichiers de jeu et Java seront enregistrés dans ce dossier.</div>
