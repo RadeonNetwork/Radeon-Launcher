@@ -549,7 +549,8 @@ class ProcessBuilder {
         
         // Mod List File Argument
         mcArgs.push('--modListFile')
-        if(this._isBelowOneDotSeven()) {
+        //if(this._isBelowOneDotSeven()) {
+		if(true) {
             mcArgs.push(path.basename(this.fmlDir))
         } else {
             mcArgs.push('absolute:' + this.fmlDir)
