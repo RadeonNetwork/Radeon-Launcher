@@ -1,6 +1,6 @@
 {
   "name": "rtmclauncher",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "productName": "Launcher RTMC",
   "description": "Launcher pour RTMC",
   "author": "Daniel Scalzi (https://github.com/dscalzi/) et GeekCorner (https://geekcorner.page.link/yt)",
@@ -43,7 +43,7 @@
     "cross-env": "^7.0.2",
     "electron": "^8.2.5",
     "electron-builder": "^22.6.0",
-    "eslint": "^7.0.0"
+    "eslint": "^7.1.0"
   },
   "repository": {
     "type": "git",
