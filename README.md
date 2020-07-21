@@ -2,7 +2,7 @@
 
 <h1 align="center">RTMC Launcher</h1>
 
-[<p align="center"><img src="https://img.shields.io/travis/com/GeekCornerGH/RTMC-Launcher.svg?style=for-the-badge" alt="travis">](https://travis-ci.com/github/GeekCornerGH/RTMC-Launcher) [<img src="https://img.shields.io/github/downloads/GeekCornerGH/RTMC-Launcher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/GeekCornerGH/RTMC-Launcher/releases)</p>
+[<p align="center"><img src="https://img.shields.io/travis/org/GeekCornerGH/RTMC-Launcher.svg?style=for-the-badge" alt="travis">](https://travis-ci.org/github/GeekCornerGH/RTMC-Launcher) [<img src="https://img.shields.io/github/downloads/GeekCornerGH/RTMC-Launcher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/GeekCornerGH/RTMC-Launcher/releases)</p>
 
 <p align="center">Rejoignez les serveurs RTMC sans avoir à vous soucier d'installer Java, Forge et les mods. Notre launcher s'occuper de tout ça pour vous.</p>
 
