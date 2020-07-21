@@ -172,22 +172,43 @@ class Util {
             return true
         }
 
-        let forgeVer = null
         try {
-            forgeVer = forgeVersion.split('-')[1]
+            
+            const forgeVer = forgeVersion.split('-')[1]
+
+            const maxFG2 = [14, 23, 5, 2847]
+            const verSplit = forgeVer.split('.').map(v => Number(v))
+
+            for(let i=0; i<maxFG2.length; i++) {
+                if(verSplit[i] > maxFG2[i]) {
+                    return true
+                } else if(verSplit[i] < maxFG2[i]) {
+                    return false
+                }
+            }
+        
+            return false
+
         } catch(err) {
             throw new Error('Forge version is complex (changed).. launcher requires a patch.')
         }
+    }
 
-        const maxFG2 = [14, 23, 5, 2847]
-        const verSplit = forgeVer.split('.').map(v => Number(v))
+    static isAutoconnectBroken(forgeVersion) {
 
-        for(let i=0; i<maxFG2.length; i++) {
-            if(verSplit[i] > maxFG2[i]) {
-                return true
+        const minWorking = [31, 2, 15]
+        const verSplit = forgeVersion.split('.').map(v => Number(v))
+
+        if(verSplit[0] === 31) {
+            for(let i=0; i<minWorking.length; i++) {
+                if(verSplit[i] > minWorking[i]) {
+                    return false
+                } else if(verSplit[i] < minWorking[i]) {
+                    return true
+                }
             }
         }
-        
+
         return false
     }
 
@@ -988,7 +1009,7 @@ class AssetGuard extends EventEmitter {
             }
             let buf = fs.readFileSync(filePath)
             let calcdhash = AssetGuard._calculateHash(buf, algo)
-            return calcdhash === hash
+            return calcdhash === hash.toLowerCase()
         }
         return false
     }

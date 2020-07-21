@@ -466,7 +466,7 @@ let proc
 let hasRPC = false
 // Joined server regex
 const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
-const GAME_JOINED_REGEX = /\[.+\]: Skipping bad option: lastServer:/
+const GAME_JOINED_REGEX = /\[.+\]: Sound engine started/
 const GAME_LAUNCH_REGEX = /^\[.+\]: MinecraftForge .+ Initialized$/
 
 let aEx
