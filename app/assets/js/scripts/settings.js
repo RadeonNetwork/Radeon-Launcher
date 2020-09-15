@@ -116,13 +116,9 @@ function initSettingsValues(){
                         populateJavaExecDetails(v.value)
                         v.value = gFn()
                     } else if (cVal === 'DataDirectory'){
-<<<<<<< HEAD
-                         v.value = gFn()
-=======
                         v.value = gFn()
                     } else if (cVal === 'ServerCode'){
                         v.value = gFn()
->>>>>>> 411c9fce3416978dd9ba4d5e882a5bf42aef375c
                     } else if(cVal === 'JVMOptions'){
                         v.value = gFn().join(' ')
                     } else {
