@@ -184,8 +184,8 @@ class ProcessBuilder {
         }
     }
 
-    _isBelowOneDotSeven() {
-        return Number(this.forgeData.id.split('-')[0].split('.')[1]) <= 7
+    _lteMinorVersion(version) {
+        return Number(this.forgeData.id.split('-')[0].split('.')[1]) <= Number(version)
     }
 
     /**
@@ -194,7 +194,7 @@ class ProcessBuilder {
      */
     _requiresAbsolute(){
         try {
-            if(this._isBelowOneDotSeven()) {
+            if(this._lteMinorVersion(9)) {
                 return false
             }
             const ver = this.forgeData.id.split('-')[2]
@@ -569,8 +569,12 @@ class ProcessBuilder {
         
         // Mod List File Argument
         mcArgs.push('--modListFile')
+<<<<<<< HEAD
         //if(this._isBelowOneDotSeven()) {
 		if(true) {
+=======
+        if(this._lteMinorVersion(9)) {
+>>>>>>> f795b28
             mcArgs.push(path.basename(this.fmlDir))
         } else {
             mcArgs.push('absolute:' + this.fmlDir)
