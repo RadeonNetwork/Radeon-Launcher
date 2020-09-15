@@ -571,12 +571,7 @@ class ProcessBuilder {
         
         // Mod List File Argument
         mcArgs.push('--modListFile')
-<<<<<<< HEAD
-        //if(this._isBelowOneDotSeven()) {
-		if(true) {
-=======
         if(this._lteMinorVersion(9)) {
->>>>>>> f795b28
             mcArgs.push(path.basename(this.fmlDir))
         } else {
             mcArgs.push('absolute:' + this.fmlDir)
