@@ -1,11 +1,11 @@
 {
   "name": "rtmclauncher",
-  "version": "1.7.6",
+  "version": "1.8.0",
   "productName": "Launcher RTMC",
   "description": "Launcher pour RTMC",
   "author": "Daniel Scalzi (https://github.com/dscalzi/) et GeekCorner (https://geekcorner.page.link/yt)",
   "license": "UNLICENSED",
-  "homepage": "https://geekcorner.page.link/yt",
+  "homepage": "https://ytgeek.gq",
   "bugs": {
     "url": "https://github.com/GeekCornerGH/RTMC-Launcher/issues"
   },
