@@ -731,7 +731,7 @@ function resolveServerCodesForUI(){
                             </div>
                         </div>
                         <div class="settingsServerCodeRemoveWrapper">
-                            <button class="settingsServerCodeRemoveButton" id="settingsRemoveServerCode" remcode="${servCode}">Remove</button>
+                            <button class="settingsServerCodeRemoveButton" id="settingsRemoveServerCode" remcode="${servCode}">Supprimer</button>
                         </div>
                     </div>
                 </div>
@@ -758,7 +758,7 @@ function resolveServerCodesForUI(){
         } else {
             servNames =
                 `
-                    <span class="settingsServerCodeServerName">Invalid Code</span> 
+                    <span class="settingsServerCodeServerName">Code invalide</span> 
                 `
         }
 

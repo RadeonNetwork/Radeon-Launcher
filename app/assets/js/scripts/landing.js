@@ -710,7 +710,7 @@ function dlAsync(login = true){
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('C\'est bon! Appréciez le serveur!')
+                    setLaunchDetails('C\'est bon! Profitez de votre expérience de jeu sur le serveur!')
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()
@@ -742,14 +742,14 @@ function dlAsync(login = true){
     // Begin Validations
 
     // Validate Forge files.
-    setLaunchDetails('Loading server information..')
+    setLaunchDetails('Chargement des informations de serveur..')
 
     refreshDistributionIndex(true, (data) => {
         onDistroRefresh(data)
         serv = data.getServer(ConfigManager.getSelectedServer())
         aEx.send({task: 'execute', function: 'validateEverything', argsArr: [ConfigManager.getSelectedServer(), DistroManager.isDevMode()]})
     }, (err) => {
-        loggerLaunchSuite.log('Error while fetching a fresh copy of the distribution index.', err)
+        loggerLaunchSuite.log('Impossible de télécharger les informations de serveur.', err)
         refreshDistributionIndex(false, (data) => {
             onDistroRefresh(data)
             serv = data.getServer(ConfigManager.getSelectedServer())
@@ -757,7 +757,7 @@ function dlAsync(login = true){
         }, (err) => {
             loggerLaunchSuite.error('Unable to refresh distribution index.', err)
             if(DistroManager.getDistribution() == null){
-                showLaunchFailure('Fatal Error', 'Could not load a copy of the distribution index. See the console (CTRL + Shift + i) for more details.')
+                showLaunchFailure('Erreur fatale', 'Impossible de télécharger les informations de serveur. Regardez la console (CTRL + Shift + i) pour en savoir plus.')
 
                 // Disconnect from AssetExec
                 aEx.disconnect()
@@ -782,9 +782,9 @@ function checkCurrentServer(errorOverlay = true){
                 if(!ConfigManager.getServerCodes().includes(selectedServ.getServerCode())){
                     if(errorOverlay){
                         setOverlayContent(
-                            'Current Server Restricted!',
-                            'It seems that you no longer have the server code required to access this server! Please switch to a different server to play on.<br><br>If you feel this is an error, please contact the server administrator',
-                            'Switch Server'
+                            'Code 403!',
+                            'On dirait que vous n\'avez plus accès au serveur. Si on vous a donné un nouveau code, rentrez-le à nouveau dans les paramètres',
+                            'Changer de serveur'
                         )
                         setOverlayHandler(() => {
                             toggleServerSelection(true)
