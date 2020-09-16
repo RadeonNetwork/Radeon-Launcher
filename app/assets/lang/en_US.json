@@ -5,8 +5,8 @@
     "js": {
         "login": {
             "error": {
-                "invalidValue": "* requis",
-                "requiredValue": "* requis",
+                "invalidValue": "* mot de passe requis",
+                "requiredValue": "* veuillez entrer votre identifiant",
                 "userMigrated": {
                     "title": "Erreur:<br>Identifiants invalides",
                     "desc": "Veuillez vous connecter avec votre email à la place de votre mot de passe.."
@@ -32,17 +32,17 @@
                     "desc": "Minecraft n'est pas acheté pour ce compte Mojang. Achetez une copie ici:<a href='https://minecraft.net'> Site de Minecraft officiel</a>"
                 },
                 "unknown": {
-                    "title": "Error During Login:<br>Unknown Error"
+                    "title": "Erreur:<br>Erreur inconue"
                 }
             },
-            "login": "LOGIN",
-            "loggingIn": "LOGGING IN",
-            "success": "SUCCESS",
-            "tryAgain": "Try Again"
+            "login": "SE CONNECTER",
+            "loggingIn": "Connexion en cours",
+            "success": "Connecté",
+            "tryAgain": "Réessayer"
         },
         "landing": {
             "launch": {
-                "pleaseWait": "Please wait.."
+                "pleaseWait": "Patientez..."
             }
         }
     }
