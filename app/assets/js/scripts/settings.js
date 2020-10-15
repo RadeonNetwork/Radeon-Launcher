@@ -42,6 +42,22 @@ document.addEventListener('click', closeSettingsSelect)
 
 bindSettingsSelect()
 
+function bindFolderOpeners(){
+    for(let ele of document.getElementsByClassName('settingsFolderOpenButton')){
+        ele.onclick = async e => {
+            const pathId = ele.getAttribute('pathId')
+            if(pathId){
+                if(pathId === 'DataDirectory'){
+                    shell.openPath(ConfigManager.getDataDirectory())
+                }
+            }
+
+        }
+    }
+}
+
+bindFolderOpeners()
+
 
 function bindFileSelectors(){
     for(let ele of document.getElementsByClassName('settingsFileSelSel')){
@@ -292,6 +308,7 @@ settingsNavDone.onclick = () => {
     ConfigManager.save()
     saveDropinModConfiguration()
     saveShaderpackSettings()
+    saveResourcePackSettings()
     switchView(getCurrentView(), VIEWS.landing)
 }
 
@@ -853,7 +870,9 @@ document.addEventListener('keydown', (e) => {
         if(e.key === 'F5'){
             reloadDropinMods()
             saveShaderpackSettings()
+            saveResourcePackSettings()
             resolveShaderpacksForUI()
+            resolveResourcePacksForUI()
         }
     }
 })
@@ -870,6 +889,8 @@ function reloadDropinMods(){
 let CACHE_SETTINGS_INSTANCE_DIR
 let CACHE_SHADERPACKS
 let CACHE_SELECTED_SHADERPACK
+let CACHE_RESOURCEPACKS
+let CACHE_SELECTED_RESOURCEPACK
 
 /**
  * Load shaderpack information.
@@ -921,7 +942,7 @@ function bindShaderpackButton() {
     spBtn.onclick = () => {
         const p = path.join(CACHE_SETTINGS_INSTANCE_DIR, 'shaderpacks')
         DropinModUtil.validateDir(p)
-        shell.openItem(p)
+        shell.openPath(p)
     }
     spBtn.ondragenter = e => {
         e.dataTransfer.dropEffect = 'move'
@@ -944,6 +965,82 @@ function bindShaderpackButton() {
         resolveShaderpacksForUI()
     }
 }
+
+/**
+ * Load resource pack information.
+ */
+function resolveResourcePacksForUI(){
+    const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+    CACHE_SETTINGS_INSTANCE_DIR = path.join(ConfigManager.getInstanceDirectory(), serv.getID())
+    CACHE_RESOURCEPACKS = DropinModUtil.scanForResourcePacks(CACHE_SETTINGS_INSTANCE_DIR)
+    CACHE_SELECTED_RESOURCEPACK = DropinModUtil.getEnabledResourcePack(CACHE_SETTINGS_INSTANCE_DIR)
+
+    setResourcePackOptions(CACHE_RESOURCEPACKS, CACHE_SELECTED_RESOURCEPACK)
+}
+
+function setResourcePackOptions(arr, selected){
+    const cont = document.getElementById('settingsResourcePackOptions')
+    cont.innerHTML = ''
+    for(let opt of arr) {
+        const d = document.createElement('DIV')
+        d.innerHTML = opt.name
+        d.setAttribute('value', opt.fullName)
+        if(opt.fullName === selected) {
+            d.setAttribute('selected', '')
+            document.getElementById('settingsResourcePackSelected').innerHTML = opt.name
+        }
+        d.addEventListener('click', function(e) {
+            this.parentNode.previousElementSibling.innerHTML = this.innerHTML
+            for(let sib of this.parentNode.children){
+                sib.removeAttribute('selected')
+            }
+            this.setAttribute('selected', '')
+            closeSettingsSelect()
+        })
+        cont.appendChild(d)
+    }
+}
+
+function saveResourcePackSettings(){
+    let sel = 'OFF'
+    for(let opt of document.getElementById('settingsResourcePackOptions').childNodes){
+        if(opt.hasAttribute('selected')){
+            sel = opt.getAttribute('value')
+        }
+    }
+    console.log(sel)
+    DropinModUtil.setEnabledResourcePack(CACHE_SETTINGS_INSTANCE_DIR, sel)
+}
+
+function bindResourcePackButton() {
+    const spBtn = document.getElementById('settingsResourcePackButton')
+    spBtn.onclick = () => {
+        const p = path.join(CACHE_SETTINGS_INSTANCE_DIR, 'resourcepacks')
+        DropinModUtil.validateDir(p)
+        shell.openPath(p)
+    }
+    spBtn.ondragenter = e => {
+        e.dataTransfer.dropEffect = 'move'
+        spBtn.setAttribute('drag', '')
+        e.preventDefault()
+    }
+    spBtn.ondragover = e => {
+        e.preventDefault()
+    }
+    spBtn.ondragleave = e => {
+        spBtn.removeAttribute('drag')
+    }
+
+    spBtn.ondrop = e => {
+        spBtn.removeAttribute('drag')
+        e.preventDefault()
+
+        DropinModUtil.addResourcePacks(e.dataTransfer.files, CACHE_SETTINGS_INSTANCE_DIR)
+        saveResourcePackSettings()
+        resolveResourcePacksForUI()
+    }
+}
+
 
 // Server status bar functions.
 
@@ -1009,9 +1106,11 @@ function prepareModsTab(first){
     resolveModsForUI()
     resolveDropinModsForUI()
     resolveShaderpacksForUI()
+    resolveResourcePacksForUI()
     bindDropinModsRemoveButton()
     bindDropinModFileSystemButton()
     bindShaderpackButton()
+    bindResourcePackButton()
     bindModsToggleSwitch()
     loadSelectedServerOnModsTab()
 }
@@ -1266,6 +1365,9 @@ document.getElementById('settingsAboutDevToolsButton').onclick = (e) => {
  */
 function isPrerelease(version){
     const preRelComp = semver.prerelease(version)
+    if(preRelComp != null && preRelComp.includes('release')) {
+        return false
+    }
     return preRelComp != null && preRelComp.length > 0
 }
 
@@ -1383,7 +1485,7 @@ function populateSettingsUpdateInformation(data){
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('Téléchargement en cours de la mise à jour..', true)
+            settingsUpdateButtonStatus('Téléchargement en cours de la mise à jour...', true)
         }
     } else {
         settingsUpdateTitle.innerHTML = 'Vous utilisez la dernière version du launcher!'

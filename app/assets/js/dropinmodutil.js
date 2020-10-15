@@ -1,5 +1,5 @@
-const fs        = require('fs-extra')
-const path      = require('path')
+const fs = require('fs-extra')
+const path = require('path')
 const { shell } = require('electron')
 
 // Group #1: File Name (without .disabled, if any)
@@ -12,6 +12,9 @@ const SHADER_REGEX = /^(.+)\.zip$/
 const SHADER_OPTION = /shaderPack=(.+)/
 const SHADER_DIR = 'shaderpacks'
 const SHADER_CONFIG = 'optionsshaders.txt'
+const OPTIONS_CONFIG = 'options.txt'
+const RESOURCEPACK_OPTION = /resourcePacks:(.+)/
+const RESOURCEPACK_DIR = 'resourcepacks'
 
 /**
  * Validate that the given directory exists. If not, it is
@@ -19,7 +22,7 @@ const SHADER_CONFIG = 'optionsshaders.txt'
  * 
  * @param {string} modsDir The path to the mods directory.
  */
-exports.validateDir = function(dir) {
+exports.validateDir = function (dir) {
     fs.ensureDirSync(dir)
 }
 
@@ -33,18 +36,18 @@ exports.validateDir = function(dir) {
  * @returns {{fullName: string, name: string, ext: string, disabled: boolean}[]}
  * An array of objects storing metadata about each discovered mod.
  */
-exports.scanForDropinMods = function(modsDir, version) {
+exports.scanForDropinMods = function (modsDir, version) {
     const modsDiscovered = []
-    if(fs.existsSync(modsDir)){
+    if (fs.existsSync(modsDir)) {
         let modCandidates = fs.readdirSync(modsDir)
         let verCandidates = []
         const versionDir = path.join(modsDir, version)
-        if(fs.existsSync(versionDir)){
+        if (fs.existsSync(versionDir)) {
             verCandidates = fs.readdirSync(versionDir)
         }
-        for(let file of modCandidates){
+        for (let file of modCandidates) {
             const match = MOD_REGEX.exec(file)
-            if(match != null){
+            if (match != null) {
                 modsDiscovered.push({
                     fullName: match[0],
                     name: match[1],
@@ -53,9 +56,9 @@ exports.scanForDropinMods = function(modsDir, version) {
                 })
             }
         }
-        for(let file of verCandidates){
+        for (let file of verCandidates) {
             const match = MOD_REGEX.exec(file)
-            if(match != null){
+            if (match != null) {
                 modsDiscovered.push({
                     fullName: path.join(version, match[0]),
                     name: match[1],
@@ -74,12 +77,12 @@ exports.scanForDropinMods = function(modsDir, version) {
  * @param {FileList} files The files to add.
  * @param {string} modsDir The path to the mods directory.
  */
-exports.addDropinMods = function(files, modsdir) {
+exports.addDropinMods = function (files, modsdir) {
 
     exports.validateDir(modsdir)
 
-    for(let f of files) {
-        if(MOD_REGEX.exec(f.name) != null) {
+    for (let f of files) {
+        if (MOD_REGEX.exec(f.name) != null) {
             fs.moveSync(f.path, path.join(modsdir, f.name))
         }
     }
@@ -94,9 +97,9 @@ exports.addDropinMods = function(files, modsdir) {
  * 
  * @returns {boolean} True if the mod was deleted, otherwise false.
  */
-exports.deleteDropinMod = function(modsDir, fullName){
+exports.deleteDropinMod = function (modsDir, fullName) {
     const res = shell.moveItemToTrash(path.join(modsDir, fullName))
-    if(!res){
+    if (!res) {
         shell.beep()
     }
     return res
@@ -113,13 +116,13 @@ exports.deleteDropinMod = function(modsDir, fullName){
  * @returns {Promise.<void>} A promise which resolves when the mod has
  * been toggled. If an IO error occurs the promise will be rejected.
  */
-exports.toggleDropinMod = function(modsDir, fullName, enable){
+exports.toggleDropinMod = function (modsDir, fullName, enable) {
     return new Promise((resolve, reject) => {
         const oldPath = path.join(modsDir, fullName)
         const newPath = path.join(modsDir, enable ? fullName.substring(0, fullName.indexOf(DISABLED_EXT)) : fullName + DISABLED_EXT)
 
         fs.rename(oldPath, newPath, (err) => {
-            if(err){
+            if (err) {
                 reject(err)
             } else {
                 resolve()
@@ -134,7 +137,7 @@ exports.toggleDropinMod = function(modsDir, fullName, enable){
  * @param {string} fullName The fullName of the discovered mod to toggle.
  * @returns {boolean} True if the mod is enabled, otherwise false.
  */
-exports.isDropinModEnabled = function(fullName){
+exports.isDropinModEnabled = function (fullName) {
     return !fullName.endsWith(DISABLED_EXT)
 }
 
@@ -146,17 +149,17 @@ exports.isDropinModEnabled = function(fullName){
  * @returns {{fullName: string, name: string}[]}
  * An array of objects storing metadata about each discovered shaderpack.
  */
-exports.scanForShaderpacks = function(instanceDir){
+exports.scanForShaderpacks = function (instanceDir) {
     const shaderDir = path.join(instanceDir, SHADER_DIR)
     const packsDiscovered = [{
         fullName: 'OFF',
-        name: 'Off (Default)'
+        name: 'Désactivé (par défaut)'
     }]
-    if(fs.existsSync(shaderDir)){
+    if (fs.existsSync(shaderDir)) {
         let modCandidates = fs.readdirSync(shaderDir)
-        for(let file of modCandidates){
+        for (let file of modCandidates) {
             const match = SHADER_REGEX.exec(file)
-            if(match != null){
+            if (match != null) {
                 packsDiscovered.push({
                     fullName: match[0],
                     name: match[1]
@@ -175,14 +178,14 @@ exports.scanForShaderpacks = function(instanceDir){
  * 
  * @returns {string} The file name of the enabled shaderpack.
  */
-exports.getEnabledShaderpack = function(instanceDir){
+exports.getEnabledShaderpack = function (instanceDir) {
     exports.validateDir(instanceDir)
 
     const optionsShaders = path.join(instanceDir, SHADER_CONFIG)
-    if(fs.existsSync(optionsShaders)){
-        const buf = fs.readFileSync(optionsShaders, {encoding: 'utf-8'})
+    if (fs.existsSync(optionsShaders)) {
+        const buf = fs.readFileSync(optionsShaders, { encoding: 'utf-8' })
         const match = SHADER_OPTION.exec(buf)
-        if(match != null){
+        if (match != null) {
             return match[1]
         } else {
             console.warn('WARNING: Shaderpack regex failed.')
@@ -197,18 +200,18 @@ exports.getEnabledShaderpack = function(instanceDir){
  * @param {string} instanceDir The path to the server instance directory.
  * @param {string} pack the file name of the shaderpack.
  */
-exports.setEnabledShaderpack = function(instanceDir, pack){
+exports.setEnabledShaderpack = function (instanceDir, pack) {
     exports.validateDir(instanceDir)
 
     const optionsShaders = path.join(instanceDir, SHADER_CONFIG)
     let buf
-    if(fs.existsSync(optionsShaders)){
-        buf = fs.readFileSync(optionsShaders, {encoding: 'utf-8'})
+    if (fs.existsSync(optionsShaders)) {
+        buf = fs.readFileSync(optionsShaders, { encoding: 'utf-8' })
         buf = buf.replace(SHADER_OPTION, `shaderPack=${pack}`)
     } else {
         buf = `shaderPack=${pack}`
     }
-    fs.writeFileSync(optionsShaders, buf, {encoding: 'utf-8'})
+    fs.writeFileSync(optionsShaders, buf, { encoding: 'utf-8' })
 }
 
 /**
@@ -217,16 +220,111 @@ exports.setEnabledShaderpack = function(instanceDir, pack){
  * @param {FileList} files The files to add.
  * @param {string} instanceDir The path to the server instance directory.
  */
-exports.addShaderpacks = function(files, instanceDir) {
+exports.addShaderpacks = function (files, instanceDir) {
 
     const p = path.join(instanceDir, SHADER_DIR)
 
     exports.validateDir(p)
 
-    for(let f of files) {
-        if(SHADER_REGEX.exec(f.name) != null) {
+    for (let f of files) {
+        if (SHADER_REGEX.exec(f.name) != null) {
             fs.moveSync(f.path, path.join(p, f.name))
         }
     }
+}
+
+/**
+ * Scan for resource packs inside the Resource Pack folder.
+ *
+ * @param {string} instanceDir The path to the server instance directory.
+ *
+ * @returns {{fullName: string, name: string}[]}
+ * An array of objects storing metadata about each discovered Resource Pack.
+ */
+exports.scanForResourcePacks = function (instanceDir) {
+    const resourcePackDir = path.join(instanceDir, RESOURCEPACK_DIR)
+    const packsDiscovered = [{
+        fullName: 'OFF',
+        name: 'Désactivé (par défaut)'
+    }]
+    if (fs.existsSync(resourcePackDir)) {
+        let modCandidates = fs.readdirSync(resourcePackDir)
+        for (let file of modCandidates) {
+            console.log(file)
+            const match = SHADER_REGEX.exec(file)
+            if (match != null) {
+                packsDiscovered.push({
+                    fullName: match[0],
+                    name: match[1]
+                })
+            }
+        }
+    }
+    return packsDiscovered
+}
+
+/**
+ * Read the options.txt file to locate the current
+ * enabled pack. If the file does not exist, OFF is returned.
+ *
+ * @param {string} instanceDir The path to the server instance directory.
+ *
+ * @returns {string} The file name of the enabled Resource Pack.
+ */
+exports.getEnabledResourcePack = function (instanceDir) {
+    exports.validateDir(instanceDir)
+
+    const options = path.join(instanceDir, OPTIONS_CONFIG)
+    if (fs.existsSync(options)) {
+        const buf = fs.readFileSync(options, { encoding: 'utf-8' })
+        const match = RESOURCEPACK_OPTION.exec(buf)
+        if (match != null) {
+            return match[1]
+        } else {
+            console.warn('WARNING: Resource Pack regex failed.')
+        }
+    }
+    return 'OFF'
+}
+
+/**
+ * Set the enabled Resource Pack.
+ *
+ * @param {string} instanceDir The path to the server instance directory.
+ * @param {string} pack the file name of the Resource Pack.
+ */
+exports.setEnabledResourcePack = function (instanceDir, pack) {
+    exports.validateDir(instanceDir)
+
+    const options = path.join(instanceDir, OPTIONS_CONFIG)
+    let buf
+    if (fs.existsSync(options)) {
+        buf = fs.readFileSync(options, { encoding: 'utf-8' })
+        buf = buf.replace(RESOURCEPACK_OPTION, `resourcePacks:["${pack}"]`)
+    } else {
+        buf = `resourcePacks:["${pack}"]`
+    }
+    console.log(buf)
+    fs.writeFileSync(options, buf, { encoding: 'utf-8' })
+}
+
+/**
+ * Add Resource Packs.
+ *
+ * @param {FileList} files The files to add.
+ * @param {string} instanceDir The path to the server instance directory.
+ */
+exports.addResourcePacks = function (files, instanceDir) {
+
+    const p = path.join(instanceDir, RESOURCEPACK_DIR)
+
+    exports.validateDir(p)
+
+    for (let f of files) {
+        if (SHADER_REGEX.exec(f.name) != null) {
+            fs.moveSync(f.path, path.join(p, f.name))
+        }
+    }
+
 
 }
