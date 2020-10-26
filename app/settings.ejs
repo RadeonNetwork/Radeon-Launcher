@@ -310,6 +310,18 @@
                     </label>
                 </div>
             </div>
+            <div class="settingsFieldContainer">
+                <div class="settingsFieldLeft">
+                    <span class="settingsFieldTitle">Activer l'intégration de Discord</span>
+                    <span class="settingsFieldDesc">Cette fonction permet d'afficher sur votre profil Discord ce que vous êtes entrain de faire sur notre launcher.</br>Vous devrez redémarrer le launcher afin d'appliquer les changements.</span>
+                </div>
+                <div class="settingsFieldRight">
+                    <label class="toggleSwitch">
+                        <input type="checkbox" cValue="DiscordIntegration">
+                        <span class="toggleSwitchSlider"></span>
+                    </label>
+                </div>
+            </div>
             <div class="settingsFileSelContainer">
                 <div class="settingsFileSelContent">
                     <div class="settingsFieldTitle" id="settingsDataDirTitle">Emplacement des données</div>
@@ -329,7 +341,7 @@
                         <input class="settingsFileSelVal" type="text" value="null" cValue="DataDirectory" disabled>
                         <button class="settingsFolderOpenButton" pathId="DataDirectory">Ouvrir</button>
                         <input class="settingsFileSelSel" id="settingsDataDirSel" type="file" webkitdirectory>
-                        <label class="settingsFileSelLabel" for="settingsDataDirSel">Choisir un dossier</label>
+                        <!--<label class="settingsFileSelLabel" for="settingsDataDirSel">Choisir un dossier</label>-->
                     </div>
                 </div>
                 <div class="settingsFileSelDesc">Tous les fichiers de jeu et Java seront enregistrés dans ce dossier.
@@ -379,7 +391,7 @@
                     <a href="https://github.com/dscalzi/HeliosLauncher" id="settingsAboutSourceButton"
                         class="settingsAboutButton">Launcher original</a>
                     <a href="https://https://github.com/ModRealms-Network/ModRealmsLauncher" id="settingsAboutSourceButton"
-                        class="settingsAboutButton">Certains extraits de code sont issus du Launcher ModRealms</a>
+                        class="settingsAboutButton">Certains extraits de code sont</br>issus du Launcher ModRealms</a>
                     <a href="https://github.com/GeekCornerGH/RTMC-Launcher/issues" id="settingsAboutSupportButton"
                         class="settingsAboutButton">Support</a>
                     <a href="#" id="settingsAboutDevToolsButton" class="settingsAboutButton">DevTools Console</a>

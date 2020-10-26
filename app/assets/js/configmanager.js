@@ -6,7 +6,7 @@ const logger = require('./loggerutil')('%c[ConfigManager]', 'color: #a02d2a; fon
 
 const sysRoot = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 // TODO change
-const dataPath = path.join(sysRoot, '.RTMC')
+const dataPath = path.join(sysRoot, '.rtmc')
 
 // Forked processes do not have access to electron, so we have this workaround.
 const launcherDir = process.env.CONFIG_DIRECT_PATH || require('electron').remote.app.getPath('userData')
@@ -98,7 +98,8 @@ const DEFAULT_CONFIG = {
                 '-XX:+UseConcMarkSweepGC',
                 '-XX:+CMSIncrementalMode',
                 '-XX:-UseAdaptiveSizePolicy',
-                '-Xmn128M'
+                '-Xmn128M',
+                '-Dfml.loginTimeout=180'
             ],
         },
         game: {
@@ -111,6 +112,7 @@ const DEFAULT_CONFIG = {
         launcher: {
             allowPrerelease: false,
             dataDirectory: dataPath,
+            discordIntegration: true,
             serverCodes: []
         }
     },
@@ -699,10 +701,29 @@ exports.getAllowPrerelease = function(def = false){
 }
 
 /**
- * Change the status of Whether or not the launcher should download prerelease versions.
+ * Change the status of whether or not the launcher should download prerelease versions.
  * 
  * @param {boolean} launchDetached Whether or not the launcher should download prerelease versions.
  */
 exports.setAllowPrerelease = function(allowPrerelease){
     config.settings.launcher.allowPrerelease = allowPrerelease
+}
+
+/**
+ * Check if the launcher should enable discord presence features
+ *
+ * @param {boolean} def Optional. If true, the default value will be returned.
+ * @returns {boolean} Whether or not the launcher should enable discord presence features
+ */
+exports.getDiscordIntegration = function(def = false){
+    return !def ? config.settings.launcher.discordIntegration : DEFAULT_CONFIG.settings.launcher.discordIntegration
+}
+
+/**
+ * Change the status of whether or not the launcher should denable discord presence features
+ *
+ * @param {boolean} discordIntegration Whether or not the launcher should enable discord presence features
+ */
+exports.setDiscordIntegration = function(discordIntegration){
+    config.settings.launcher.discordIntegration = discordIntegration
 }

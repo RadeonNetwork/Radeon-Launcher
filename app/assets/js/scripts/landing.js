@@ -114,6 +114,10 @@ document.getElementById('launch_button').addEventListener('click', function (e) 
 document.getElementById('settingsMediaButton').onclick = (e) => {
     prepareSettings()
     switchView(getCurrentView(), VIEWS.settings)
+    if(hasRPC){
+        DiscordWrapper.updateDetails('Dans les réglages...')
+        DiscordWrapper.clearState()
+    }
 }
 
 // Bind avatar overlay button.
@@ -253,6 +257,20 @@ const refreshServerStatus = async function (fade = false) {
         document.getElementById('player_count').innerHTML = pVal
     }
 
+}
+
+function loadDiscord(){
+    if(!ConfigManager.getDiscordIntegration()) return
+    const distro = DistroManager.getDistribution()
+    const serv = distro.getServer(ConfigManager.getSelectedServer())
+
+    loggerLanding.log('Now loading DiscordRPC')
+    if(!hasRPC){
+        if(distro.discord != null){
+            DiscordWrapper.initRPC(distro.discord, serv.discord, '...')
+            hasRPC = true
+        }
+    }
 }
 
 refreshMojangStatuses()
@@ -661,7 +679,8 @@ function dlAsync(login = true) {
                 const onLoadComplete = () => {
                     toggleLaunchArea(false)
                     if (hasRPC) {
-                        DiscordWrapper.updateDetails('Loading game..')
+                        DiscordWrapper.updateDetails('Chargement du jeu...')
+                        DiscordWrapper.resetTime()
                     }
                     proc.stdout.on('data', gameStateChange)
                     proc.stdout.removeListener('data', tempListener)
@@ -713,9 +732,10 @@ function dlAsync(login = true) {
                 const gameStateChange = function (data) {
                     data = data.trim()
                     if (SERVER_JOINED_REGEX.test(data)) {
-                        DiscordWrapper.updateDetails('Exploration de RTMC')
+                        DiscordWrapper.updateDetails('Exploration de RTMC...')
                     } else if (GAME_JOINED_REGEX.test(data)) {
-                        DiscordWrapper.updateDetails('RTMC!')
+                        //DiscordWrapper.updateDetails('En jeu sur RTMC!')
+                        DiscordWrapper.resetTime()
                     }
                 }
 
@@ -737,18 +757,14 @@ function dlAsync(login = true) {
 
                     setLaunchDetails('C\'est bon! Profitez de votre expérience de jeu sur le serveur!')
 
-                    // Init Discord Hook
-                    const distro = DistroManager.getDistribution()
-                    if (distro.discord != null && serv.discord != null) {
-                        DiscordWrapper.initRPC(distro.discord, serv.discord)
-                        hasRPC = true
-                        proc.on('close', (code, signal) => {
-                            loggerLaunchSuite.log('Arrêt de Discord Rich Presence..')
-                            DiscordWrapper.shutdownRPC()
-                            hasRPC = false
-                            proc = null
-                        })
-                    }
+                    proc.on('close', (code, signal) => {
+                        if(hasRPC){
+                            const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+                            DiscordWrapper.updateDetails('Prêt à jouer')
+                            DiscordWrapper.updateState('Serveur: ' + serv.getName())
+                            DiscordWrapper.resetTime()
+                        }
+                    })
 
                 } catch (err) {
 
@@ -900,6 +916,15 @@ document.getElementById('newsButton').onclick = () => {
     if (newsActive) {
         $('#landingContainer *').removeAttr('tabindex')
         $('#newsContainer *').attr('tabindex', '-1')
+        if(hasRPC){
+            if(ConfigManager.getSelectedServer()){
+                const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+                DiscordWrapper.updateDetails('Prêt à jouer!')
+                DiscordWrapper.updateState('Serveur: ' + serv.getName())
+            } else {
+                DiscordWrapper.updateDetails('Prêt à lancer le jeu...')
+            }
+        }
     } else {
         $('#landingContainer *').attr('tabindex', '-1')
         $('#newsContainer, #newsContainer *, #lower, #lower #center *').removeAttr('tabindex')
@@ -908,6 +933,10 @@ document.getElementById('newsButton').onclick = () => {
             newsAlertShown = false
             ConfigManager.setNewsCacheDismissed(true)
             ConfigManager.save()
+        }
+        if(hasRPC){
+            DiscordWrapper.updateDetails('Entrain de lire les news...')
+            DiscordWrapper.clearState()
         }
     }
     slide_(!newsActive)

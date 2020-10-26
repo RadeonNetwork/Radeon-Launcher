@@ -247,6 +247,22 @@ loginCancelButton.onclick = (e) => {
         if(loginViewCancelHandler != null){
             loginViewCancelHandler()
             loginViewCancelHandler = null
+            if(loginViewOnSuccess === VIEWS.settings){
+                if(hasRPC){
+                    DiscordWrapper.updateDetails('Dans les réglages...')
+                    DiscordWrapper.clearState()
+                }
+            } else {
+                if(hasRPC){
+                    if(ConfigManager.getSelectedServer()){
+                        const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+                        DiscordWrapper.updateDetails('Prêt à jouer!')
+                        DiscordWrapper.updateState('Serveur: ' + serv.getName())
+                    } else {
+                        DiscordWrapper.updateDetails('Prêt à lancer le jeu...')
+                    }
+                }
+            }
         }
     })
 }
@@ -271,6 +287,20 @@ loginButton.addEventListener('click', () => {
             switchView(VIEWS.login, loginViewOnSuccess, 500, 500, () => {
                 // Temporary workaround
                 if(loginViewOnSuccess === VIEWS.settings){
+                    if(hasRPC){
+                        DiscordWrapper.updateDetails('Dans les réglages...')
+                        DiscordWrapper.clearState()
+                    }
+                } else {
+                    if(hasRPC){
+                        if(ConfigManager.getSelectedServer()){
+                            const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+                            DiscordWrapper.updateDetails('Prêt à jouer!')
+                            DiscordWrapper.updateState('Serveur: ' + serv.getName())
+                        } else {
+                            DiscordWrapper.updateDetails('Prêt à lancer le jeu...')
+                        }
+                    }
                     prepareSettings()
                 }
                 loginViewOnSuccess = VIEWS.landing // Reset this for good measure.

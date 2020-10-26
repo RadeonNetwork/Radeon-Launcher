@@ -310,6 +310,15 @@ settingsNavDone.onclick = () => {
     saveShaderpackSettings()
     saveResourcePackSettings()
     switchView(getCurrentView(), VIEWS.landing)
+    if(hasRPC){
+        if(ConfigManager.getSelectedServer()){
+            const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+            DiscordWrapper.updateDetails('Prêt à jouer!')
+            DiscordWrapper.updateState('Serveur: ' + serv.getName())
+        } else {
+            DiscordWrapper.updateDetails('Prêt à démarrer le jeu...')
+        }
+    }
 }
 
 /**
@@ -322,6 +331,10 @@ document.getElementById('settingsAddAccount').onclick = (e) => {
         loginViewOnCancel = VIEWS.settings
         loginViewOnSuccess = VIEWS.settings
         loginCancelEnabled(true)
+        if(hasRPC){
+            DiscordWrapper.updateDetails('Entrain d\'ajouter un compte...')
+            DiscordWrapper.clearState()
+        }
     })
 }
 
@@ -408,6 +421,10 @@ function bindAuthAccountLogOut(){
                     processLogOut(val, isLastAccount)
                     toggleOverlay(false)
                     switchView(getCurrentView(), VIEWS.login)
+                    if(hasRPC){
+                        DiscordWrapper.updateDetails('Entrain d\'ajouter un compte...')
+                        DiscordWrapper.clearState()
+                    }
                 })
                 setDismissHandler(() => {
                     toggleOverlay(false)
@@ -1491,7 +1508,7 @@ function populateSettingsUpdateInformation(data){
         settingsUpdateTitle.innerHTML = 'Vous utilisez la dernière version du launcher!'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        settingsUpdateButtonStatus('Vérifier les mises à jour...', false, () => {
+        settingsUpdateButtonStatus('Vérifier les mises à jour', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
                 settingsUpdateButtonStatus('Verification des mises à jour...', true)

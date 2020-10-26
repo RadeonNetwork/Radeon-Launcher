@@ -96,7 +96,9 @@ function createWindow() {
 
     win = new BrowserWindow({
         width: 980,
+        minWidth: 980,
         height: 552,
+        minHeight: 552,
         icon: getPlatformIcon('SealCircle'),
         frame: false,
         webPreferences: {
