@@ -86,6 +86,10 @@ function setLaunchEnabled(val) {
 // Bind launch button
 document.getElementById('launch_button').addEventListener('click', function (e) {
     if (checkCurrentServer(true)) {
+        if(ConfigManager.getConsoleOnLaunch()){
+            let window = remote.getCurrentWindow()
+            window.toggleDevTools()
+        }
         loggerLanding.log('Launching game..')
         const mcVersion = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
         const jExe = ConfigManager.getJavaExecutable()
@@ -755,7 +759,7 @@ function dlAsync(login = true) {
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('C\'est bon! Profitez de votre expérience de jeu sur le serveur!')
+                    setLaunchDetails('C\'est bon!<br>Bon jeu!')
 
                     proc.on('close', (code, signal) => {
                         if(hasRPC){
