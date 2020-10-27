@@ -50,7 +50,8 @@ builder.build({
             vendor: 'GeekCorner',
             synopsis: 'Launcher pour RTMC',
             description: 'Launcher pour RTMC permettant de rejoindre les différents modes de jeux..',
-            category: 'Game'
+            category: 'Game',
+            artifactName: '${productName}-linux-${version}.${ext}'
         },
         compression: 'maximum',
         files: [
