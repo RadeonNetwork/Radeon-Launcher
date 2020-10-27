@@ -1,8 +1,9 @@
+**__Ce fork ne fonctionne qu'en local.__**
 <p align="center"><img src="./app/assets/images/SealCircle.png" width="150px" height="150px" alt="aventium softworks"></p>
 
 <h1 align="center">RTMC Launcher</h1>
 
-[<p align="center"><img src="https://img.shields.io/travis/org/GeekCornerGH/RTMC-Launcher.svg?style=for-the-badge" alt="travis">](https://travis-ci.org/github/GeekCornerGH/RTMC-Launcher) [<img src="https://img.shields.io/github/downloads/GeekCornerGH/RTMC-Launcher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/GeekCornerGH/RTMC-Launcher/releases)</p>
+[<p align="center"><img src="https://img.shields.io/travis/GeekCornerGH/RTMC-Launcher.svg?style=for-the-badge" alt="travis">](https://travis-ci.org/github/GeekCornerGH/RTMC-Launcher) [<img src="https://img.shields.io/github/downloads/GeekCornerGH/RTMC-Launcher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/GeekCornerGH/RTMC-Launcher/releases)[Dépendances](https://img.shields.io/david/geekcornergh/rtmc-launcher?style=for-the-badge)</p>
 
 <p align="center">Rejoignez les serveurs RTMC sans avoir à vous soucier d'installer Java, Forge et les mods. Notre launcher s'occuper de tout ça pour vous.</p>
 
@@ -40,6 +41,7 @@ Téléchargez le launcher depuis [GitHub](https://github.com/GeekCornerGH/RTMC-L
 #### Dernière version
 
 [![](https://img.shields.io/github/v/release/geekcornergh/rtmc-launcher?style=for-the-badge)](https://github.com/GeekCornerGH/RTMC-Launcher/releases/latest)
+[https://img.shields.io/github/v/release/geekcornergh/rtmc-launcher?include_prereleases&style=for-the-badge](https://github.com/GeekCornerGH/RTMC-Launcher/releases/latest)
 
 
 **Plateformes suportées**
@@ -49,8 +51,8 @@ Téléchargez le launcher depuis l'onglet [Releases](https://github.com/GeekCorn
 | Platform | File |
 | -------- | ---- |
 | Windows x64 | `rtmc-launcher-setup-VERSION.exe` |
-| macOS | `rtmc-launcher-VERSION.dmg` |
-| Linux x64 | `rtmc-launcher-VERSION-x86_64.AppImage` |
+| macOS | `rtmc-launcher-setup-VERSION.dmg` |
+| Linux x64 | `rtmc-launcher-linux-VERSION.AppImage` |
 
 ---
 
