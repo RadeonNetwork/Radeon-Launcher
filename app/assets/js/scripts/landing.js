@@ -183,8 +183,8 @@ const refreshMojangStatuses = async function () {
         for (let i = 0; i < statuses.length; i++) {
             const service = statuses[i]
 
-            // Mojang API is broken for these two. https://bugs.mojang.com/browse/WEB-2303
-            if (service.service === 'sessionserver.mojang.com' || service.service === 'minecraft.net') {
+            // Mojang API is broken for sessionserver. https://bugs.mojang.com/browse/WEB-2303
+            if (service.service === 'sessionserver.mojang.com') {
                 service.status = 'green'
             }
 
@@ -759,7 +759,7 @@ function dlAsync(login = true) {
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('C\'est bon!<br>Bon jeu!')
+                    setLaunchDetails('C\'est bon! </br> Bon jeu!')
 
                     proc.on('close', (code, signal) => {
                         if(hasRPC){
