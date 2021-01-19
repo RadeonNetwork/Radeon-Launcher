@@ -1,13 +1,13 @@
 {
-  "name": "rtmclauncher",
+  "name": "radeonlauncher",
   "version": "1.8.5-release",
-  "productName": "Launcher RTMC",
-  "description": "Launcher pour RTMC",
+  "productName": "Launcher Radeon",
+  "description": "Launcher pour radeon",
   "author": "Daniel Scalzi (https://github.com/dscalzi/) et GeekCorner (https://geekcorner.page.link/yt)",
   "license": "UNLICENSED",
   "homepage": "https://ytgeek.gq",
   "bugs": {
-    "url": "https://github.com/GeekCornerGH/RTMC-Launcher/issues"
+    "url": "https://github.com/RadeonNetowork/Radeon-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -48,6 +48,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GeekCornerGH/RTMC-Launcher.git"
+    "url": "git+https://github.com/RadeonNetwork/Radeon-Launcher.git"
   }
 }

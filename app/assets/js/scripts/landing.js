@@ -352,7 +352,7 @@ function asyncSystemScan(mcVersion, launchAfter = true) {
                 // Show this information to the user.
                 setOverlayContent(
                     "Aucune version compatible de <br>Java n'a été trouvée",
-                    'Pour rejoindre RTMC, vous devez installer Java 8 x64. Voulez-vous que nous installions Java? En insatallant, vous acceptez <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">La licence Java</a>.',
+                    'Pour rejoindre Radeon, vous devez installer Java 8 x64. Voulez-vous que nous installions Java? En insatallant, vous acceptez <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">La licence Java</a>.',
                     'Installer Java',
                     'Installer Manuellement'
                 )
@@ -736,7 +736,7 @@ function dlAsync(login = true) {
                 const gameStateChange = function (data) {
                     data = data.trim()
                     if (SERVER_JOINED_REGEX.test(data)) {
-                        DiscordWrapper.updateDetails('Exploration de RTMC...')
+                        DiscordWrapper.updateDetails('Exploration de Radeon...')
                     } else if (GAME_JOINED_REGEX.test(data)) {
                         //DiscordWrapper.updateDetails('En jeu sur RTMC!')
                         DiscordWrapper.resetTime()
@@ -747,7 +747,7 @@ function dlAsync(login = true) {
                     data = data.trim()
                     if (data.indexOf('Impossible de trouver net.minecraft.launchwrapper.Launch') > -1) {
                         loggerLaunchSuite.error('Problème de lancement du jeu, LaunchWrapper n\'a pas été téléchargé proprement.')
-                        showLaunchFailure('Problème du lancement du jeu.', 'Le fichier, LaunchWrapper, n\'a pas été téléchargé proprement. Le jeu n\'a pas pu être lancé.<br><br>Veuillez essayez de désactiver temporairement votre antivirus.<br><br>Veuillez créer une issue <a href="https://github.com/GeekCornerGH/RTMC-launcher/issues">ici</a>.')
+                        showLaunchFailure('Problème du lancement du jeu.', 'Le fichier, LaunchWrapper, n\'a pas été téléchargé proprement. Le jeu n\'a pas pu être lancé.<br><br>Veuillez essayez de désactiver temporairement votre antivirus.<br><br>Veuillez créer une issue <a href="https://github.com/Radeonnetwork/Radeon-launcher/issues">ici</a>.')
                     }
                 }
 
