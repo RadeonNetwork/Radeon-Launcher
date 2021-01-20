@@ -184,9 +184,9 @@ const refreshMojangStatuses = async function () {
             const service = statuses[i]
 
             // Mojang API is broken for sessionserver. https://bugs.mojang.com/browse/WEB-2303
-            if (service.service === 'sessionserver.mojang.com') {
+            /*if (service.service === 'sessionserver.mojang.com') {
                 service.status = 'green'
-            }
+            }*/
 
             if (service.essential) {
                 tooltipEssentialHTML += `<div class="mojangStatusContainer">
