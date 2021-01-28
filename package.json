@@ -31,7 +31,7 @@
     "ejs": "^3.1.5",
     "ejs-electron": "^2.1.1",
     "electron-updater": "^4.3.5",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^9.1.0",
     "github-syntax-dark": "^0.5.0",
     "jquery": "^3.5.1",
     "npm-upgrade": "^2.0.4",
@@ -42,9 +42,9 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "electron": "^11.1.0",
+    "electron": "^11.2.0",
     "electron-builder": "^22.9.1",
-    "eslint": "^7.16.0"
+    "eslint": "^7.18.0"
   },
   "repository": {
     "type": "git",
