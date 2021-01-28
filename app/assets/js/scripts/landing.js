@@ -5,6 +5,7 @@
 const cp = require('child_process')
 const crypto = require('crypto')
 const { URL } = require('url')
+const fs = require('fs-extra')
 
 // Internal Requirements
 const DiscordWrapper = require('./assets/js/discordwrapper')
@@ -72,6 +73,7 @@ function setLaunchPercentage(value, max, percent = ((value / max) * 100)) {
 function setDownloadPercentage(value, max, percent = ((value / max) * 100)) {
     remote.getCurrentWindow().setProgressBar(value / max)
     setLaunchPercentage(value, max, percent)
+    DiscordWrapper.updateDetails('Téléchargement en cours... (' + percent + '%)')
 }
 
 /**
@@ -82,11 +84,21 @@ function setDownloadPercentage(value, max, percent = ((value / max) * 100)) {
 function setLaunchEnabled(val) {
     document.getElementById('launch_button').disabled = !val
 }
+/**
+ * Enable or disable the launch button.
+ *
+ * @param {string} the text to set the launch button to.
+ */
+function setLaunchButtonText(text){
+    document.getElementById('launch_button').innerHTML = text
+}
+
+
 
 // Bind launch button
 document.getElementById('launch_button').addEventListener('click', function (e) {
     if (checkCurrentServer(true)) {
-        if(ConfigManager.getConsoleOnLaunch()){
+        if (ConfigManager.getConsoleOnLaunch()) {
             let window = remote.getCurrentWindow()
             window.toggleDevTools()
         }
@@ -118,7 +130,7 @@ document.getElementById('launch_button').addEventListener('click', function (e) 
 document.getElementById('settingsMediaButton').onclick = (e) => {
     prepareSettings()
     switchView(getCurrentView(), VIEWS.settings)
-    if(hasRPC){
+    if (hasRPC) {
         DiscordWrapper.updateDetails('Dans les réglages...')
         DiscordWrapper.clearState()
     }
@@ -149,19 +161,26 @@ updateSelectedAccount(ConfigManager.getSelectedAccount())
 
 // Bind selected server
 function updateSelectedServer(serv) {
+    server_selection_button.innerHTML = (serv != null ? serv.getName() : 'Aucun serveur séléctionné')
     if (getCurrentView() === VIEWS.settings) {
         saveAllModConfigurations()
     }
     ConfigManager.setSelectedServer(serv != null ? serv.getID() : null)
     ConfigManager.save()
-    server_selection_button.innerHTML = '\u2022 ' + (serv != null ? serv.getName() : 'No Server Selected')
     if (getCurrentView() === VIEWS.settings) {
         animateModsTabRefresh()
     }
     setLaunchEnabled(serv != null)
+    if(serv){
+        setLaunchButtonText(fs.pathExistsSync(path.join(ConfigManager.getDataDirectory(), 'instances', serv.getID())) ? 'JOUER' : 'INSTALLER</br>ET JOUER')
+    } else {
+        setLaunchButtonText('JOUER')
+    }
+
+
 }
 // Real text is set in uibinder.js on distributionIndexDone.
-server_selection_button.innerHTML = '\u2022 Loading..'
+server_selection_button.innerHTML = '\u2022 Chargement...'
 server_selection_button.onclick = (e) => {
     e.target.blur()
     toggleServerSelection(true)
@@ -258,14 +277,14 @@ const refreshServerStatus = async function (fade = false) {
 
 }
 
-function loadDiscord(){
-    if(!ConfigManager.getDiscordIntegration()) return
+function loadDiscord() {
+    if (!ConfigManager.getDiscordIntegration()) return
     const distro = DistroManager.getDistribution()
     const serv = distro.getServer(ConfigManager.getSelectedServer())
 
     loggerLanding.log('Now loading DiscordRPC')
-    if(!hasRPC){
-        if(distro.discord != null){
+    if (!hasRPC) {
+        if (distro.discord != null) {
             DiscordWrapper.initRPC(distro.discord, serv.discord, '...')
             hasRPC = true
         }
@@ -667,6 +686,7 @@ function dlAsync(login = true) {
             versionData = m.result.versionData
 
             if (login && allGood) {
+                updateSelectedServer(data.getServer(ConfigManager.getSelectedServer()))
                 const authUser = ConfigManager.getSelectedAccount()
                 loggerLaunchSuite.log(`Envoi du compte (${authUser.displayName}) vers ProcessBuilder.`)
                 let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
@@ -702,7 +722,7 @@ function dlAsync(login = true) {
                     }
                 }
 
-            
+
 
                 const gameCrashReportListener = function (data) {
                     data = data.trim()
@@ -757,7 +777,7 @@ function dlAsync(login = true) {
                     setLaunchDetails('C\'est bon! </br> Bon jeu!')
 
                     proc.on('close', (code, signal) => {
-                        if(hasRPC){
+                        if (hasRPC) {
                             const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
                             DiscordWrapper.updateDetails('Prêt à jouer')
                             DiscordWrapper.updateState('Serveur: ' + serv.getName())
@@ -915,8 +935,8 @@ document.getElementById('newsButton').onclick = () => {
     if (newsActive) {
         $('#landingContainer *').removeAttr('tabindex')
         $('#newsContainer *').attr('tabindex', '-1')
-        if(hasRPC){
-            if(ConfigManager.getSelectedServer()){
+        if (hasRPC) {
+            if (ConfigManager.getSelectedServer()) {
                 const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
                 DiscordWrapper.updateDetails('Prêt à jouer!')
                 DiscordWrapper.updateState('Serveur: ' + serv.getName())
@@ -933,7 +953,7 @@ document.getElementById('newsButton').onclick = () => {
             ConfigManager.setNewsCacheDismissed(true)
             ConfigManager.save()
         }
-        if(hasRPC){
+        if (hasRPC) {
             DiscordWrapper.updateDetails('Entrain de lire les news...')
             DiscordWrapper.clearState()
         }
