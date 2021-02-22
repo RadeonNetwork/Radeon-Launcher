@@ -371,7 +371,7 @@ function asyncSystemScan(mcVersion, launchAfter = true) {
                 // Show this information to the user.
                 setOverlayContent(
                     "Aucune version compatible de <br>Java n'a été trouvée",
-                    'Pour rejoindre RTMC, vous devez installer Java 8 x64. Voulez-vous que nous installions Java? En insatallant, vous acceptez <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">La licence Java</a>.',
+                    'Pour rejoindre Radeon, vous devez installer Java 8 x64. Voulez-vous que nous installions Java? En insatallant, vous acceptez <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">La licence Java</a>.',
                     'Installer Java',
                     'Installer Manuellement'
                 )
@@ -691,7 +691,7 @@ function dlAsync(login = true) {
             versionData = m.result.versionData
 
             if (login && allGood) {
-                updateSelectedServer(data.getServer(ConfigManager.getSelectedServer()))
+                updateSelectedServer(DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()))
                 const authUser = ConfigManager.getSelectedAccount()
                 loggerLaunchSuite.log(`Envoi du compte (${authUser.displayName}) vers ProcessBuilder.`)
                 let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
@@ -756,9 +756,9 @@ function dlAsync(login = true) {
                 const gameStateChange = function (data) {
                     data = data.trim()
                     if (SERVER_JOINED_REGEX.test(data)) {
-                        DiscordWrapper.updateDetails('Exploration de RTMC...')
+                        DiscordWrapper.updateDetails('Exploration de Radeon...')
                     } else if (GAME_JOINED_REGEX.test(data)) {
-                        //DiscordWrapper.updateDetails('En jeu sur RTMC!')
+                        //DiscordWrapper.updateDetails('En jeu sur Radeon!')
                         DiscordWrapper.resetTime()
                     }
                 }
@@ -767,7 +767,7 @@ function dlAsync(login = true) {
                     data = data.trim()
                     if (data.indexOf('Impossible de trouver net.minecraft.launchwrapper.Launch') > -1) {
                         loggerLaunchSuite.error('Problème de lancement du jeu, LaunchWrapper n\'a pas été téléchargé proprement.')
-                        showLaunchFailure('Problème du lancement du jeu.', 'Le fichier, LaunchWrapper, n\'a pas été téléchargé proprement. Le jeu n\'a pas pu être lancé.<br><br>Veuillez essayez de désactiver temporairement votre antivirus.<br><br>Veuillez créer une issue <a href="https://github.com/GeekCornerGH/RTMC-launcher/issues">ici</a>.')
+                        showLaunchFailure('Problème du lancement du jeu.', 'Le fichier, LaunchWrapper, n\'a pas été téléchargé proprement. Le jeu n\'a pas pu être lancé.<br><br>Veuillez essayez de désactiver temporairement votre antivirus.<br><br>Veuillez créer une issue <a href="https://github.com/radeonnetwork/radeon-launcher/issues">ici</a>.')
                     }
                 }
 
@@ -1184,7 +1184,7 @@ document.addEventListener('keydown', (e) => {
 function displayArticle(articleObject, index) {
     newsArticleTitle.innerHTML = articleObject.title
     newsArticleTitle.href = articleObject.link
-    newsArticleAuthor.innerHTML = 'by ' + articleObject.author
+    newsArticleAuthor.innerHTML = 'par ' + articleObject.author
     newsArticleDate.innerHTML = articleObject.date
     newsArticleComments.innerHTML = articleObject.comments
     newsArticleComments.href = articleObject.commentsLink
@@ -1195,7 +1195,7 @@ function displayArticle(articleObject, index) {
             text.style.display = text.style.display === 'block' ? 'none' : 'block'
         }
     })
-    newsNavigationStatus.innerHTML = index + ' of ' + newsArr.length
+    newsNavigationStatus.innerHTML = index + ' sur ' + newsArr.length
     newsContent.setAttribute('article', index - 1)
 }
 
@@ -1219,11 +1219,11 @@ function loadNews() {
                     const el = $(items[i])
 
                     // Resolve date.
-                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' })
+                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('fr-FR', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' })
 
                     // Resolve comments.
-                    let comments = el.find('slash\\:comments').text() || '0'
-                    comments = comments + ' Comment' + (comments === '1' ? '' : 's')
+                    let comments = el.find('slash\\:commentaires').text() || '0'
+                    comments = comments + ' Commentaire' + (comments === '1' ? '' : 's')
 
                     // Fix relative links in content.
                     let content = el.find('content\\:encoded').text()
